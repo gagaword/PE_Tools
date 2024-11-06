@@ -10,7 +10,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
-    MessageBox(0,0,0,0);
+    
 	PEhInst = hInstance;
 	DialogBox(hInstance, MAKEINTRESOURCE(IDD_DIALOG_MAIN), nullptr, DiaMainProc);
       
