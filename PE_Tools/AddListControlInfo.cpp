@@ -408,3 +408,39 @@ VOID AddImportInfo(HWND HListImportInfo, HWND hDlg)
 	wsprintf(ThunkNumber, L"%d\n", thunkNumber);
 	SetDlgItemText(hDlg, IDC_STATIC_THUNK_NUMBER, ThunkNumber);
 } 
+
+
+VOID AddTeZheng(HWND hDlg, HWND hFaterHdlg)
+{
+	char zz[] = {
+			0x0001 ,
+	0x0002,
+	0x0004 ,
+	0x0008 ,
+	0x0010 ,
+	0x0020 ,
+	0x0080 ,
+	0x0100 ,
+	0x0200 ,
+	0x0400 ,
+	0x0800 ,
+	0x1000 ,
+	0x2000 ,
+	0x4000 ,
+	0x8000,
+	};
+	wchar_t num[0x20];
+	HWND TEZHNEG = GetDlgItem(hFaterHdlg, IDC_EDIT_TEZHNEG);
+	GetWindowText(TEZHNEG, num, 0x20);
+
+	unsigned int  featureValue = 0;
+	swscanf_s(num, L"%x", &featureValue);
+	for (int i = 0; i < 14; ++i)
+	{
+		if (featureValue & zz[i])
+		{
+			HWND hCheckBox = GetDlgItem(hDlg, IDC_CHECK1 + i);
+			SendMessage(hCheckBox, BM_SETCHECK, BST_CHECKED, 0);
+		}
+	}
+}

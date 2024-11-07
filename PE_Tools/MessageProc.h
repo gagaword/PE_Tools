@@ -18,6 +18,8 @@ BOOL CALLBACK PeFuncProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
 BOOL CALLBACK idm_time_proc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
+BOOL CALLBACK TeZheng(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
 // 数据目录对话框
 BOOL CALLBACK PeDataProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 

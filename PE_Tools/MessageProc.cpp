@@ -216,10 +216,15 @@ BOOL CALLBACK PeFuncProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 			// Ê±¼ä´Á
 			case IDC_BUTTON_TIME_INFO:
 			{
-				HWND button_time_info = GetDlgItem(hDlg, IDD_DIALOG_TIME_TO_RILI);
+				HWND button_time_info = GetDlgItem(hDlg, IDC_BUTTON_TIME_INFO);
 				DialogBoxParam(PEhInst, MAKEINTRESOURCE(IDD_DIALOG_TIME_TO_RILI), button_time_info, TimeProc, (LPARAM)hDlg);
 				break;
 
+			}
+			case IDC_BUTTON_TEZHENG_INFO:
+			{
+				HWND button_tezheng = GetDlgItem(hDlg, IDC_BUTTON_TEZHENG_INFO);
+				DialogBoxParam(PEhInst, MAKEINTRESOURCE(IDD_DIALOG_TEZHNEG), button_tezheng, TeZheng, (LPARAM)hDlg);
 			}
 			break;
 		}
@@ -691,6 +696,42 @@ BOOL CALLBACK TimeProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 					SetDlgItemText(hDlg, IDC_EDIT1, buffer);
 					break;
 
+				}
+				break;
+			}
+			break;
+		}
+		break;
+	}
+	return FALSE;
+}
+
+
+BOOL CALLBACK TeZheng(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	static HWND hParentDlg;
+
+	switch (message)
+	{
+		case WM_CLOSE:
+		{
+			EndDialog(hDlg, 0);
+			return TRUE;
+		}
+		case WM_INITDIALOG:
+		{
+			hParentDlg = (HWND)lParam;
+			AddTeZheng(hDlg, hParentDlg);
+			break;
+		}
+		case WM_COMMAND:
+		{
+			switch (LOWORD(wParam))
+			{
+				case IDC_BUTTON2:
+				{
+					EndDialog(hDlg, 0);
+					return TRUE;
 				}
 				break;
 			}

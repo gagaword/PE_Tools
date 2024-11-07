@@ -12,8 +12,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     
 	PEhInst = hInstance;
-	DialogBox(hInstance, MAKEINTRESOURCE(IDD_DIALOG_MAIN), nullptr, DiaMainProc);
-      
+	DialogBox(hInstance, MAKEINTRESOURCE(IDD_DIALOG_MAIN), nullptr, DiaMainProc);     
 }
 
 

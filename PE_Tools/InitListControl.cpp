@@ -170,4 +170,3 @@ BOOL InitImportIfoList(HWND hImportInfoList)
 
 	return TRUE;
 }
-

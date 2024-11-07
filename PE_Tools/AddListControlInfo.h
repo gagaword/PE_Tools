@@ -19,4 +19,6 @@ VOID AddImportList(HWND hListImoprtControl);
 
 VOID AddImportInfo(HWND HListImportInfo, HWND hDlg);
 
+VOID AddTeZheng(HWND hDlg, HWND hFaterHdlg);
+
 
