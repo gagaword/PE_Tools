@@ -6,7 +6,7 @@ void ImportNumber(HWND hDlg);
 void InitTime(HWND hDlg, HWND hParentWnd);
 void TimeJiSuan(HWND hDlg);
 void NowTime(HWND hDlg);
-void JiSuan(HWND hDlg);
+
 
 using RadioMapping = struct {
 	int radioID;
@@ -115,7 +115,10 @@ BOOL CALLBACK DiaMainProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				if (OpenFileDialog(hWnd, szFile, sizeof(szFile) / sizeof(TCHAR)))
 				{
 					// 处理打开的文件，例如读取内容
-					MessageBox(hWnd, szFile, L"文件路径", MB_OK);
+					//MessageBox(hWnd, szFile, L"文件路径", MB_OK);
+
+
+
 				}
 				break;
 			}
@@ -195,7 +198,6 @@ BOOL CALLBACK PeFuncProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 			{
 				HWND buttonPeDataHwnd = GetDlgItem(hDlg, IDC_BUTTON_MULU);
 				DialogBox(PEhInst, MAKEINTRESOURCE(IDD_DIALOG_DATAMULU), buttonPeDataHwnd, PeDataProc);
-
 				break;
 			}
 
@@ -279,7 +281,7 @@ BOOL CALLBACK PeDataProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		case WM_INITDIALOG:
 		{
 			AddDataInfo(hDlg);
-			
+			break;
 		}
 		case WM_COMMAND:
 		{
@@ -289,6 +291,13 @@ BOOL CALLBACK PeDataProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 				{
 					HWND button_import_info = GetDlgItem(hDlg, IDC_BUTTON_IMPORT_INFO);
 					DialogBox(PEhInst, MAKEINTRESOURCE(IDD_DIALOG_IMPORT), button_import_info, ImportInfo);
+					break;
+				}
+				case IDC_BUTTON_EXPORT_INFO:
+				{
+					
+
+					
 					break;
 				}
 				break;
@@ -613,7 +622,6 @@ void ImportNumber(HWND hDlg)
 	SetDlgItemText(hDlg, IDC_STATIC_IMPORT_NUMBER, buffer);	
 }
 
-
 BOOL CALLBACK TimeProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	static HWND hParentWnd = NULL;
@@ -705,7 +713,6 @@ BOOL CALLBACK TimeProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	return FALSE;
 }
-
 
 BOOL CALLBACK TeZheng(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -873,7 +880,6 @@ void NowTime(HWND hDlg)
 	swprintf_s(buffer, L"%lld", timestamp);
 	SetDlgItemText(hDlg, IDC_EDIT1, buffer);
 }
-
 
 BOOL CALLBACK idm_time_proc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
